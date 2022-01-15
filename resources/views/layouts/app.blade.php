@@ -12,9 +12,11 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{  asset('css/app.css') }}">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+        <link href="{{ asset('libs/toastr/toastr.min.css') }}" rel="stylesheet">
+       
         <link rel="icon" href="https://icap.columbia.edu/wp-content/uploads/cropped-Flavicon-ICAP-32x32.png" sizes="32x32">
+
+        @yield('styles')
 
         @livewireStyles
 
@@ -46,6 +48,48 @@
 
         @livewireScripts
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        @yield('scripts')
+    	<script src="{{ asset('libs/toastr/toastr.min.js') }}" type="text/javascript"></script>
+
+        <script>
+            var optionsToastr = {
+            closeButton: true,
+            debug: false,
+            newestOnTop: true,
+            progressBar: true,
+            positionClass: "toast-top-right",
+            preventDuplicates: false,
+            showDuration: 300,
+            hideDuration: 1000,
+            optionsToastr: 5000,
+            extendedTimeOut: 1000,
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut"
+        };
+
+
+        function toastrInfo(mensaje){
+            toastr.options = optionsToastr;
+            toastr['info']('\n'+mensaje, 'IACAP');
+        };
+
+        function toastrSuccess(mensaje){
+            toastr.options = optionsToastr;
+            toastr['success']('\n'+mensaje, 'IACAP');
+        };
+
+        function toastrWarning(mensaje){
+            toastr.options = optionsToastr;
+            toastr['warning']('\n'+mensaje, 'IACAP');
+        };
+
+        function toastrError(mensaje){
+            toastr.options = optionsToastr;
+            toastr['error']('\n'+mensaje, 'IACAP');
+        };
+        </script>
+        @include('layouts.notifications')
     </body>
 </html>

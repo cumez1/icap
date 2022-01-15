@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmpleadosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,11 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified','checkstatus'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+Route::middleware(['auth:sanctum', 'verified','checkstatus'])->group(function () {
+    Route::get('/empleados', [EmpleadosController::class, 'index'])->name('empleados.index');
+    Route::get('/empleados/crear', [EmpleadosController::class, 'crear'])->name('empleados.crear');
+    Route::post('/empleados/save', [EmpleadosController::class, 'save'])->name('empleados.save');
+
+});
