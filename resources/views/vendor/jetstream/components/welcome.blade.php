@@ -8,10 +8,63 @@
     </div>
 
     <div class="mt-6 text-gray-500">
-        Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
-        to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe
-        you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel
-        ecosystem to be a breath of fresh air. We hope you love it.
+        Based at Columbia University with operations in more than 30 countries, ICAP is a leader in global public health, internationally known for tackling the world’s toughest health challenges—from HIV to tuberculosis, from malaria to maternal and child health, and the growing problem of non-communicable diseases, and most recently, the COVID-19 pandemic. Through innovative research, collaborative technical assistance, and a focus on strengthening health systems, ICAP helps to create better, more accessible, health services to reduce the burden of illness on people and communities. A beacon for inspiring change, ICAP disseminates knowledge and best practices to inspire better population health worldwide.
+        <br>
+        <br>
+        ICAP was founded at Columbia’s Mailman School of Public Health in 2003 by Wafaa El-Sadr. ICAP was created at a time when an estimated 2.4 million people were dying every year from HIV around the world. As the global crisis unfolded, ICAP was determined to overcome the challenge of making HIV treatment available in areas with very limited health care infrastructure. 
+    </div>
+
+    <div class="mt-6 text-gray-500">
+        <div class="col-sm-6 col-xl-4 mg-t-15 mg-sm-t-20 mg-xl-t-0">
+            <div class="card card-hover" style="background-color: #f5f4e8">
+                <div class="card-header">
+                    <table width="100%">
+                        <tr>
+                            <td colspan="2"><img src="{{asset('img/bank/banguat-logo.gif')}}" alt="Logo" height="50"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Tipo de Cambio según Banco de Guatemala</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Dolar USD</td>
+                        </tr>
+                        <tr>
+                            <td>{{now()->format('d/m/Y') }}</td>
+                            <td>Q. {{session('tipoCambio')->banguat_referencia }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br>
+        
+        <div class="col-sm-6 col-xl-4 mg-t-50 mg-sm-t-20 mg-xl-t-0">
+            <div class="card card-hover  card-profile-sidebar" id="banrural">
+                <div class="card-header">
+                    <table width="100%">
+                        <tr>
+                            <td colspan="2"><img src="{{asset('img/bank/banrural.png')}}" alt="Logo" width="150"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Dolar USD</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{now()->format('d/m/Y') }}</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>
+                                <h5>Q. {{optional(session('tipoCambio'))->banrural_compra}}</h5>
+                                <small>Compra</small>
+                            </td>
+                            <td>
+                                <h5>Q. {{optional(session('tipoCambio'))->banrural_venta}}</h5>
+                                <small>Venta</small>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
