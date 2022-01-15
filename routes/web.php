@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpleadosController;
 use App\Http\Controllers\EmpleadosAsignacionController;
+use App\Http\Controllers\ReportesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,5 +35,7 @@ Route::middleware(['auth:sanctum', 'verified','checkstatus'])->group(function ()
 
     Route::get('/empleados/asignacion/{id?}', [EmpleadosAsignacionController::class, 'asignar'])->name('asignacion.asignar');
     Route::post('/asignacion/save', [EmpleadosAsignacionController::class, 'save'])->name('asignacion.save');
+    
+    Route::get('/reporets', [ReportesController::class, 'index'])->name('reportes.index');
 
 });
