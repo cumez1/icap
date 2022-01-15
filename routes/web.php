@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpleadosController;
+use App\Http\Controllers\EmpleadosAsignacionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,8 @@ Route::middleware(['auth:sanctum', 'verified','checkstatus'])->group(function ()
     Route::get('/empleados/estado/{id?}', [EmpleadosController::class, 'estado'])->name('empleados.estado');
     Route::post('/empleados/save', [EmpleadosController::class, 'save'])->name('empleados.save');
     Route::post('/empleados/update', [EmpleadosController::class, 'update'])->name('empleados.update');
+
+    Route::get('/empleados/asignacion/{id?}', [EmpleadosAsignacionController::class, 'asignar'])->name('asignacion.asignar');
+    Route::post('/asignacion/save', [EmpleadosAsignacionController::class, 'save'])->name('asignacion.save');
 
 });
