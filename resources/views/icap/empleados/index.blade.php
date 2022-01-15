@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="padding: 10px;">
 				<div class="py-1">
 					<a href="{{route('empleados.crear')}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
-						Crear nuevo
+						<i class="fas fa-plus-circle"></i> &nbsp;&nbsp; Crear nuevo
 					</a>
 				</div>
 				<br>
@@ -23,7 +23,8 @@
 							<th data-priority="4">Celular</th>
 							<th data-priority="5">Fecha Nacimiento</th>
 							<th data-priority="6">Edad</th>
-							<th data-priority="7">Acciones</th>
+							<th data-priority="7">Estado</th>
+							<th data-priority="8">Acciones</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -35,8 +36,27 @@
 								<td>{{$item->telefono}}</td>
 								<td>{{$item->fh_nacimiento_format}}</td>
 								<td>{{$item->edad}}</td>
+								<td>{{$item->esta_activo ? 'Activo' : 'Inactivo'}}</td>
 								<td>
-								
+									<a 
+										href="{{route('empleados.editar',$item->id_empleado)}}" 
+										class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
+										<i class="fas fa-edit"></i>
+									</a>
+									
+									@if($item->esta_activo)
+										<a  
+											href="{{route('empleados.estado',$item->id_empleado)}}"
+											class="inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 active:bg-red-600 disabled:opacity-25 transition">
+											<i class="fas fa-trash"></i>
+										</a>
+									@else
+										<a  
+											href="{{route('empleados.estado',$item->id_empleado)}}"
+											class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition">
+											<i class="fas fa-trash-restore-alt"></i>
+										</a>
+									@endif
 								</td>
 							</tr>
 						@endforeach
@@ -63,6 +83,8 @@
 	<!--Datatables -->
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	
 	<script>
 		$(document).ready(function() {
 

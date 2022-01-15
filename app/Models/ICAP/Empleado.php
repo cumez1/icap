@@ -14,7 +14,7 @@ class Empleado extends Model
     protected $primaryKey = 'id_empleado';
     protected $appends    = ['nombre_completo','fh_nacimiento_format','edad'];
     protected $fillable = [
-        'id_puesto','cui','nombres', 'apellidos','fh_nacimiento',
+        'cui','nombres', 'apellidos','fh_nacimiento',
         'email','telefono','direccion','esta_activo'
     ];
     protected $hidden = ['usuario_ingreso', 'fh_ingreso', 'ip_ingreso'];

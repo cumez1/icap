@@ -9,10 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-10 lg:px-10">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style="padding: 10px;">
 
-				
-				
-				<form class="w-full max-w-lg" autocomplete="off" method="POST" action="{{route('empleados.save')}}">
+				<form class="w-full max-w-lg" autocomplete="off" method="POST" action="{{route('empleados.update')}}">
 					@csrf
+					<input type="hidden" name="id_empleado" value="{{$registro->id_empleado}}">
 
 					@if ($errors->any())
 						<div class="flex flex-wrap -mx-3 mb-2">
@@ -40,7 +39,7 @@
 
 						<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 							<div class="py-1">
-								<i class="fas fa-plus-circle"></i> CREAR REGISTRO
+								<i class="fas fa-edit"></i> EDITAR REGISTRO
 							</div>
 						</div>
 					</div>
@@ -54,7 +53,7 @@
 								class="appearance-none block bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
 								id="cui" 
 								name="cui" 
-								value="{{old('cui')}}" 
+								value="{{old('cui',$registro->cui)}}" 
 								type="text">
 						</div>
 						<div class="md:w-1/2 px-3 mb-6 md:mb-0">
@@ -65,7 +64,7 @@
 								class="appearance-none block bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
 								id="nombres" 
 								name="nombres" 
-								value="{{old('nombres')}}" 
+								value="{{old('nombres',$registro->nombres)}}" 
 								type="text">
 						</div>
 				
@@ -77,7 +76,7 @@
 								class="appearance-none block bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
 								id="apellidos" 
 								name="apellidos" 
-								value="{{old('apellidos')}}" 
+								value="{{old('apellidos',$registro->apellidos)}}" 
 								type="text">
 						</div>
 					</div>
@@ -92,7 +91,7 @@
 								class="appearance-none block bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
 								id="fh_nacimiento" 
 								name="fh_nacimiento" 
-								value="{{old('fh_nacimiento')}}" 
+								value="{{old('fh_nacimiento',Carbon::parse($registro->fh_nacimiento)->format('Y-m-d'))}}" 
 								type="date">
 						</div>
 				
@@ -104,7 +103,7 @@
 								class="appearance-none block bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
 								id="email" 
 								name="email" 
-								value="{{old('email')}}" 
+								value="{{old('email',$registro->email)}}" 
 								type="email">
 						</div>
 
@@ -116,7 +115,7 @@
 								class="appearance-none block bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
 								id="telefono" 
 								name="telefono" 
-								value="{{old('telefono')}}" 
+								value="{{old('telefono',$registro->telefono)}}" 
 								type="number">
 						</div>
 					</div>
@@ -131,8 +130,8 @@
 							<input 
 							class="appearance-none block w-3/4 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
 							id="direccion" 
-							name="direccion" 
-							value="{{old('direccion')}}"
+							name="direccion"
+							value="{{old('direccion',$registro->direccion)}}"
 							type="text">
 						</div>
 					</div>
@@ -142,7 +141,7 @@
 							<button
 								type="submit" 
 								class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
-								<i class="far fa-save"></i>&nbsp;&nbsp; Guardar Registro
+								<i class="fas fa-sync-alt"></i>&nbsp;&nbsp; Actualizar Registro
 							</button>
 						</div>
 					</div>
