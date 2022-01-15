@@ -40,7 +40,7 @@
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                     <img 
                     src="https://icap.columbia.edu/wp-content/uploads/icap_logo_RGB-header-01.svg" 
-                    alt="ICAP" title="icap_logo_RGB-header-01" 
+                    alt="ICAP" title="Logo ICAP" 
                     width="250px;">
                 </div>
 
