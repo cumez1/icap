@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmpleadosController;
+use App\Http\Controllers\EmpleadosAsignacionController;
+use App\Http\Controllers\ReportesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +18,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::middleware(['auth:sanctum', 'verified','checkstatus'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+
+Route::middleware(['auth:sanctum', 'verified','checkstatus'])->group(function () {
+    Route::get('/empleados', [EmpleadosController::class, 'index'])->name('empleados.index');
+    Route::get('/empleados/crear', [EmpleadosController::class, 'crear'])->name('empleados.crear');
+    Route::get('/empleados/editar/{id?}', [EmpleadosController::class, 'editar'])->name('empleados.editar');
+    Route::get('/empleados/estado/{id?}', [EmpleadosController::class, 'estado'])->name('empleados.estado');
+    Route::post('/empleados/save', [EmpleadosController::class, 'save'])->name('empleados.save');
+    Route::post('/empleados/update', [EmpleadosController::class, 'update'])->name('empleados.update');
+
+    Route::get('/empleados/asignacion/{id?}', [EmpleadosAsignacionController::class, 'asignar'])->name('asignacion.asignar');
+    Route::post('/asignacion/save', [EmpleadosAsignacionController::class, 'save'])->name('asignacion.save');
+    
+    Route::get('/reporets', [ReportesController::class, 'index'])->name('reportes.index');
+
 });
