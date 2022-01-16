@@ -129,6 +129,7 @@ class EmpleadosController extends Controller
                 'email'     => $request->email,
                 'telefono'  => $request->telefono,
                 'direccion' => $request->direccion,
+                'fh_nacimiento' => $request->fh_nacimiento,
             ]);
 
             DB::commit();
